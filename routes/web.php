@@ -16,3 +16,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix'=>'api/v1'], function() use($router){
+    $router->get('/domains', 'DomainController@index');
+    $router->post('/domains/create', 'DomainController@create');
+    $router->get('/domains/{id}', 'DomainController@show');
+    $router->put('/domains/update/{id}', 'DomainController@update');
+    $router->delete('/domains/delete/{id}', 'DomainController@destroy');
+    $router->get('/domains/export', 'DomainController@export_all');
+    });
