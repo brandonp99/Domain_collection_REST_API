@@ -90,9 +90,40 @@ class DomainController extends Controller
             fputcsv($file, array_merge($header, $row));
         }
 
-        
-
         fclose($file);
+     }
+
+     public function bulk_import(Request $request){
+
+        if(!$request->hasFile('csv')) {
+            return response()->json(['upload_file_not_found'], 400);
+        }
+
+        $file = $request->file('csv');
+
+        if(!$file->isValid()) {
+            return response()->json(['invalid_file_upload'], 400);
+        }
+
+        $path = 'import.csv';
+
+        $open = fopen($file, 'r');
+
+        while (($data = fgetcsv($open)) !== FALSE) {
+            $domain = new Domain;
+
+            $domain->domain_name = $data[0];
+            $domain->tld = $data[1];
+            $domain->created_at = $data[2];
+            $domain->updated_at = $data[3];
+       
+            $domain->save();
+        }
+
+        
+        $file->move($path, $file->getClientOriginalName());
+        
+        return response()->json(compact('path'));
      }
 
 

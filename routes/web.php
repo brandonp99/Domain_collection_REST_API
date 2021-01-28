@@ -24,4 +24,5 @@ $router->group(['prefix'=>'api/v1'], function() use($router){
     $router->put('/domains/update/{id}', 'DomainController@update');
     $router->delete('/domains/delete/{id}', 'DomainController@destroy');
     $router->get('/domains/export', 'DomainController@export_all');
+    $router->post('/domains/import', 'DomainController@bulk_import');
     });
