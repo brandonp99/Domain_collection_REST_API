@@ -17,12 +17,20 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix'=>'api/v1'], function() use($router){
-    $router->get('/domains', 'DomainController@index');
-    $router->post('/domains/create', 'DomainController@create');
-    $router->get('/domains/{id}', 'DomainController@show');
-    $router->put('/domains/update/{id}', 'DomainController@update');
-    $router->delete('/domains/delete/{id}', 'DomainController@destroy');
-    $router->get('/domains/export', 'DomainController@export_all');
-    $router->post('/domains/import', 'DomainController@bulk_import');
+$router->group(['prefix'=>'api/v1/domains'], function() use($router){
+    $router->post('/register', 'AuthController@register');
+    $router->post('/login', 'AuthController@login');
+
+    $router->get('/profile', 'UserController@profile');
+    $router->get('/users/find/{id}', 'UserController@singleUser');
+    $router->get('/users', 'UserController@allUsers');
+
+    $router->get('/', 'DomainController@index');
+    $router->post('/create', 'DomainController@create');
+    $router->get('/find/{id}', 'DomainController@show');
+    $router->put('/update/{id}', 'DomainController@update');
+    $router->delete('/delete/{id}', 'DomainController@destroy');
+
+    $router->get('/export', 'DomainController@export_all');
+    $router->post('/import', 'DomainController@bulk_import');
     });

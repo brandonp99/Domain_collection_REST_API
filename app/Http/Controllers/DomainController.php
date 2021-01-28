@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class DomainController extends Controller
@@ -13,6 +14,11 @@ class DomainController extends Controller
      *
      * @return void
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
      
@@ -38,7 +44,15 @@ class DomainController extends Controller
 
      public function show($id)
      {
-        $domain = Domain::find($id);
+        try {
+            $domain = Domain::findOrFail($id);
+
+            return response()->json(['domain' => $domain], 200);
+
+        } catch (\Exception $e) {
+
+            return response()->json(['message' => 'user not found!'], 404);
+        }
 
         return response()->json($domain);
      }
@@ -57,7 +71,7 @@ class DomainController extends Controller
 
      public function destroy($id)
      {
-        $domain = Domain::find($id);
+        $domain = Domain::findOrFail($id);
         $domain->delete();
 
          return response()->json('domain removed successfully');
