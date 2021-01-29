@@ -19,7 +19,7 @@ class Domain extends Model implements AuthenticatableContract, AuthorizableContr
      * @var array
      */
     protected $fillable = [
-        'id', 'domain_name', 'tld', 'created_at', 'updated_at', 
+        'id', 'domain_name', 'tld',  
     ];
 
     // /**

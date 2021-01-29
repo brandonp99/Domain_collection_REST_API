@@ -1,24 +1,31 @@
-# Lumen PHP Framework
+# Domains API
+Laravel/Lumen based API to help manage a large collection of domains.
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+## Additional Features
+ 1. Bulk import
+ 2. Bulk export
+ 3. JWT Authentication
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Set Up
 
-## Official Documentation
+ 1. Install packages
+composer install
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+2. Run docker container
+docker run --network myNetwork --name mongo1 -d -p 2717:27017 mongo:latest
 
-## Contributing
+3. Start Application
+php -S localhost:8000 -t public
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+## Usage
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+You can find OAS documentation here - https://app.swaggerhub.com/apis/MyOrganisation29/Domains_API/1.0
 
 ## License
+[![CC BY 4.0][cc-by-shield]][cc-by]
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+[![CC BY 4.0][cc-by-image]][cc-by]
