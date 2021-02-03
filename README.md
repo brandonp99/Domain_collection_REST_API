@@ -9,12 +9,15 @@ Laravel/Lumen based API to help manage a large collection of domains.
 ## Set Up
 
  1. Install packages
+ 
 composer install
 
 2. Run docker container
+
 docker run --network myNetwork --name mongo1 -d -p 2717:27017 mongo:latest
 
 3. Start Application
+
 php -S localhost:8000 -t public
 
 
